@@ -1,9 +1,14 @@
-function signup() {
-  localStorage.setItem("user", email.value);
-  window.location = "dashboard.html";
-}
+import { auth } from './firebase.js';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
 
-function login() {
-  localStorage.setItem("user", email.value);
-  window.location = "dashboard.html";
-}
+
+window.signup = () => {
+createUserWithEmailAndPassword(auth, email.value, password.value)
+.then(() => location = 'dashboard.html');
+};
+
+
+window.login = () => {
+signInWithEmailAndPassword(auth, email.value, password.value)
+.then(() => location = 'dashboard.html');
+};
