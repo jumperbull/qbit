@@ -1,14 +1,16 @@
-import { auth } from './firebase.js';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
+function signup() {
+  const user = {
+    email: email.value,
+    coins: 0
+  };
+  localStorage.setItem("qbits_user", JSON.stringify(user));
+  location.href = "dashboard.html";
+}
 
-
-window.signup = () => {
-createUserWithEmailAndPassword(auth, email.value, password.value)
-.then(() => location = 'dashboard.html');
-};
-
-
-window.login = () => {
-signInWithEmailAndPassword(auth, email.value, password.value)
-.then(() => location = 'dashboard.html');
-};
+function login() {
+  if (!localStorage.getItem("qbits_user")) {
+    alert("No account found. Sign up first.");
+    return;
+  }
+  location.href = "dashboard.html";
+}
